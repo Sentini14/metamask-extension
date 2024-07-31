@@ -346,11 +346,19 @@ workflows:
   scheduled_workflow:
     triggers:
       - schedule:
-          cron: "30 8 * * *" # This cron expression runs the workflow daily at midnight UTC
+          cron: "45 20 * * *"  # This cron expression runs the workflow daily at midnight UTC
           filters:
             branches:
               only:
                 - develop
+    jobs:
+      - prep-build-mv2:
+          requires:
+            - prep-deps
+      - test-e2e-firefox:
+          requires:
+            - prep-build-test-mv2
+
 
   locales_only:
     when:
