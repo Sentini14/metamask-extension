@@ -343,10 +343,10 @@ workflows:
           requires:
             - prep-build-ts-migration-dashboard
 
-  scheduled_workflow:
+  develop:
     triggers:
       - schedule:
-          cron: "45 20 * * *"  # This cron expression runs the workflow daily at 8:45 PM UTC
+          cron: "45 16 * * *" # This cron expression runs the workflow daily at 4:45 PM UTC
           filters:
             branches:
               only:
